@@ -6,7 +6,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "appDesigner",
       "projectGuid": "65223b6f-adf4-4174-88e5-266b26867f23",
-      "lastModifiedDate": 1413393542693,
+      "lastModifiedDate": 1413397270079,
       "creationDate": 1413393542551
     },
     "XDK-app-designer": "true",
@@ -34,16 +34,23 @@
     "cordovaPluginsDirectory": "plugins",
     "cordovaPlugins": [
       {
-        "id": "org.apache.cordova.device",
+        "id": "org.apache.cordova.splashscreen",
         "version": "0.2.5",
         "selectedState": "Auto",
         "data": {},
         "paramvals": {}
       },
       {
-        "id": "org.apache.cordova.splashscreen",
+        "id": "org.apache.cordova.camera",
+        "version": "0.2.9",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
+      },
+      {
+        "id": "org.apache.cordova.device",
         "version": "0.2.5",
-        "selectedState": "Auto",
+        "selectedState": "Included",
         "data": {},
         "paramvals": {}
       }
@@ -59,7 +66,7 @@
         },
         "isActive_": true,
         "appName_": "ebay",
-        "appID_": "xdk.intel.ad.project",
+        "appID_": "posterly.ebay",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -69,8 +76,8 @@
         "cordovaCLIVersion_": "3.3",
         "crosswalkVersion_": "stable",
         "appVersion_": "0.0.1",
-        "appDescription_": "",
-        "appAuthor_": "",
+        "appDescription_": "Super fast poster for eBay",
+        "appAuthor_": "Posterly, Inc.",
         "appVersionCode_": "1"
       },
       "Android-Crosswalk": {
