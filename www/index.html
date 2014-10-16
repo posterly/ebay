@@ -70,6 +70,19 @@
                         div.container div.input-group {
                                 margin-bottom: 10px;   
                             }
+                        ul.bs-photos-list {
+                            clear: both;   
+                        }
+                        ul.bs-photos-list li {
+                            float: left;
+                            width: 25%;
+                            height: 115px;
+                            line-height: 1.4;
+                            text-align: center;
+                            background-color: #eee;
+                            padding: 10px;
+                            margin: 0 5px 5px 0;
+                        }
                 </style>
 
                 <script type="application/javascript" src="js/jquery.min.js"></script>
@@ -139,7 +152,9 @@
                         
                         
                         <div class="input-group">
-                          <span class="input-group-addon">Title</span>
+                          <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-globe"></span>
+                            </span>
                           <input type="text" class="form-control" placeholder="Item name">
                         
                         </div>
@@ -156,31 +171,71 @@
                         
                         </div>
                         
-                        <div class="row">
-                            <div class="col-lg-8 col-lg-offset-2">
-
-
-                            <div class="thumbnail">
-                              <!--<img data-src="holder.js/300x300" alt="...">-->
-                              <div class="caption">
-                                <h3>Add photos</h3>
-                                
-                                <p>
-                                    <a href="#" class="btn btn-primary" role="button">Photo 1</a>
-                                    <a href="#" class="btn btn-default" role="button">Photo 2</a>
-                                    <a href="#" class="btn btn-default" role="button">Photo 3</a>
-                                    <a href="#" class="btn btn-default" role="button">Photo 3</a>
+                        <nav class="navbar navbar-inverse" role="navigation" style='background:#222; padding: 0;'>
+                              <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
                                   
-                                </p>
-                              </div>
-                            </div>
+                                  <a class="navbar-brand" href="#">
+                                      
+                                      <span class='glyphicon glyphicon-facetime-video'></span>
+                                      
+                                      Photos
+                                 
+                                    </a>
+                                </div>
+
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                                  <ul class="nav navbar-nav">
+                                    <li class="active"><a href="#">Photo 1</a></li>
+                                    <li><a href="#">Add another photo</a></li>
+                                  </ul>
+                                </div><!-- /.navbar-collapse -->
+                              </div><!-- /.container-fluid -->
+                            </nav>
+                        
+                        
+                        <div class="bs-glyphicons">
+                            <ul class="bs-glyphicons-list bs-photos-list" style='list-style: none;'>
+
+                                <li>
+                                  <span class="glyphicon glyphicon-asterisk"></span>
+                                  <span class="glyphicon-class">glyphicon glyphicon-asterisk</span>
+                                </li>
+
+                                <li>
+                                  <span class="glyphicon glyphicon-plus"></span>
+                                  <span class="glyphicon-class">glyphicon glyphicon-plus</span>
+                                </li>
+
+                                <li>
+                                  <span class="glyphicon glyphicon-euro"></span>
+                                  <span class="glyphicon-class">glyphicon glyphicon-euro</span>
+                                </li>
+
+                                <li>
+                                  <span class="glyphicon glyphicon-minus"></span>
+                                  <span class="glyphicon-class">glyphicon glyphicon-minus</span>
+                                </li>
 
 
+
+                            </ul>
                           </div>
-                            
-                            
-                            
-                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         
                         
                         <a href="#about" class="btn btn-circle page-scroll">
