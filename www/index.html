@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
-<!--
+        <!--
   * Please see the included README.md file for license terms and conditions.
   -->
-<head>
-    <title>Blank App Designer Project Template</title>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta name="description" content="Poster.ly for eBay">
-    
-<!--
+
+        <head>
+                <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+                <meta charset="UTF-8">
+                <title>Blank App Designer Project Template</title>
+                <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+                <meta name="description" content="Poster.ly for eBay">
+
+                <!--
   * The "meta viewport" tag (below) helps your app size appropriately to a device's screen.
   * Note that the meta viewport approach is being phased out in favor of the @viewport CSS rule.
   * For a quick overview of both, see this article:
@@ -16,74 +19,73 @@
   * To see what happens, try the app on a real device with and without a "meta viewport" tag.
 -->
 
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+                <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+                <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+                <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
 
-    <style>
-    /* following three (cascaded) are equivalent to above three meta viewport statements */
-    /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
-    /* see http://dev.w3.org/csswg/css-device-adapt/ */
-        @-ms-viewport { width: 100vw ; zoom: 100% ; }                           @viewport { width: 100vw ; zoom: 100% ; }
-        @-ms-viewport { user-zoom: fixed ; }                                    @viewport { user-zoom: fixed ; }
-        /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
-    </style>
+                <style>
+                        /* following three (cascaded) are equivalent to above three meta viewport statements */
+                            /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+                            /* see http://dev.w3.org/csswg/css-device-adapt/ */
+                                @-ms-viewport { width: 100vw ; zoom: 100% ; }                           @viewport { width: 100vw ; zoom: 100% ; }
+                                @-ms-viewport { user-zoom: fixed ; }                                    @viewport { user-zoom: fixed ; }
+                                /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+                </style>
 
-    <link rel="stylesheet" href="css/old-android.css">
+                <link rel="stylesheet" href="css/old-android.css">
 
-    <!-- IMPORTANT: Do not include your weinre script tag as part of your release builds! -->
-    <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work below -->
-    <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+                <!-- IMPORTANT: Do not include your weinre script tag as part of your release builds! -->
+                <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work below -->
+                <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
 
-    <!-- Most third-party libraries should go here. References (below) are just examples to give you the general idea... -->
-    <!-- <script src="lib/ft/fastclick.js"></script> -->
+                <!-- Most third-party libraries should go here. References (below) are just examples to give you the general idea... -->
+                <!-- <script src="lib/ft/fastclick.js"></script> -->
 
-    <script src="intelxdk.js"></script>         <!-- phantom library, needed for XDK "legacy" container api calls -->
-    <script src="cordova.js"></script>          <!-- phantom library, needed for Cordova api calls -->
-    <script src="xhr.js"></script>              <!-- phantom library, needed for XDK "legacy" container CORS -->
+                <script src="intelxdk.js"></script>
+                <!-- phantom library, needed for XDK "legacy" container api calls -->
+                <script src="cordova.js"></script>
+                <!-- phantom library, needed for Cordova api calls -->
+                <script src="xhr.js"></script>
+                <!-- phantom library, needed for XDK "legacy" container CORS -->
 
-    <script src="js/app.js"></script>
-    <script src="js/init-app.js"></script>
-    <script src="js/init-dev.js"></script>
-    
-    
-    <!-- Hello Grayscale -->
-    
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-    <link href="css/grayscale.css" rel="stylesheet">
+                <script src="js/app.js"></script>
+                <script src="js/init-app.js"></script>
+                <script src="js/init-dev.js"></script>
 
-    <!-- Custom Fonts -->
-    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
-    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+                <!-- Hello Grayscale -->
 
-    
-    <style>
-        div.container div.input-group {
-            margin-bottom: 10px;   
-        }
-    
-    </style>
-    
-</head>
+                <link href="css/bootstrap.min.css" rel="stylesheet">
 
+                <!-- Custom CSS -->
+                <link href="css/grayscale.css" rel="stylesheet">
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+                <!-- Custom Fonts -->
+                <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- IMPORTANT: Do not include your weinre script tag as part of your release builds! -->
-    <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
-    <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
-    
-    
-    <!-- Grayscale start -->
-    
-    
-    
-    
-    
+                <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+                <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+                <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+
+                <style>
+                        div.container div.input-group {
+                                margin-bottom: 10px;   
+                            }
+                </style>
+
+                <script type="application/javascript" src="js/jquery.min.js"></script>
+                <script type="application/javascript" src="marginal/marginal-position.min.js"></script>
+                <script type="application/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        </head>
+
+        <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+                <!-- IMPORTANT: Do not include your weinre script tag as part of your release builds! -->
+                <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
+                <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+                <!-- Grayscale start -->
+
+            
     
     <!-- Navigation -->
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -93,7 +95,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i>  <span class="light">Poster.ly</span> eBay
+                    <i class="fa fa-play-circle"></i>  <span class="light">Posterly</span> eBay
                 </a>
             </div>
 
@@ -137,7 +139,7 @@
                         
                         
                         <div class="input-group">
-                          <span class="input-group-addon"></span>
+                          <span class="input-group-addon">Title</span>
                           <input type="text" class="form-control" placeholder="Item name">
                         
                         </div>
@@ -155,8 +157,7 @@
                         </div>
                         
                         <div class="row">
-                            
-                          <div class="col-sm-6 col-md-4">
+                            <div class="col-lg-8 col-lg-offset-2">
 
 
                             <div class="thumbnail">
@@ -262,8 +263,9 @@
     <script src="js/grayscale.js"></script>
 
     
-    <!-- Grayscale end -->
-    
+            
+                <!-- Grayscale end -->
 
-</body>
+        </body>
+
 </html>

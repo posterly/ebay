@@ -6,7 +6,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "appDesigner",
       "projectGuid": "65223b6f-adf4-4174-88e5-266b26867f23",
-      "lastModifiedDate": 1413397270079,
+      "lastModifiedDate": 1413421705527,
       "creationDate": 1413393542551
     },
     "XDK-app-designer": "true",
@@ -46,13 +46,6 @@
         "selectedState": "Included",
         "data": {},
         "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.device",
-        "version": "0.2.5",
-        "selectedState": "Included",
-        "data": {},
-        "paramvals": {}
       }
     ],
     "buildConfigurations": {
@@ -65,10 +58,35 @@
           "android-targetSdkVersion": "19"
         },
         "isActive_": true,
-        "appName_": "ebay",
+        "appName_": "Poster.ly for eBay",
         "appID_": "posterly.ebay",
         "appAccess_": "*",
-        "icons_": [],
+        "icons_": [
+          {
+            "relPath": "icon_36.png",
+            "density": "ldpi",
+            "height": 36,
+            "width": 36
+          },
+          {
+            "relPath": "icon-48-mdpi.png",
+            "density": "mdpi",
+            "height": 48,
+            "width": 48
+          },
+          {
+            "relPath": "icon-72-hdpi.png",
+            "density": "hdpi",
+            "height": 72,
+            "width": 72
+          },
+          {
+            "relPath": "icon-96-xhdpi.png",
+            "density": "xhdpi",
+            "height": 96,
+            "width": 96
+          }
+        ],
         "splashes_": [],
         "iosProvs_": [],
         "addlPermissions_": "",
@@ -89,10 +107,35 @@
           "android-targetSdkVersion": "19"
         },
         "isActive_": true,
-        "appName_": "ebay",
-        "appID_": "xdk.intel.ad.project",
+        "appName_": "Poster.ly for eBay",
+        "appID_": "posterly.ebay",
         "appAccess_": "*",
-        "icons_": [],
+        "icons_": [
+          {
+            "relPath": "icon_36.png",
+            "density": "ldpi",
+            "height": 36,
+            "width": 36
+          },
+          {
+            "relPath": "icon-48-mdpi.png",
+            "density": "mdpi",
+            "height": 48,
+            "width": 48
+          },
+          {
+            "relPath": "icon-72-hdpi.png",
+            "density": "hdpi",
+            "height": 72,
+            "width": 72
+          },
+          {
+            "relPath": "icon-96-xhdpi.png",
+            "density": "xhdpi",
+            "height": 96,
+            "width": 96
+          }
+        ],
         "splashes_": [],
         "iosProvs_": [],
         "addlPermissions_": "",
@@ -100,8 +143,8 @@
         "cordovaCLIVersion_": "3.3",
         "crosswalkVersion_": "stable",
         "appVersion_": "0.0.1",
-        "appDescription_": "",
-        "appAuthor_": "",
+        "appDescription_": "Super fast poster for eBay",
+        "appAuthor_": "Posterly, Inc.",
         "appVersionCode_": "1"
       },
       "iOS": {
@@ -113,8 +156,8 @@
           "ios-configuration": "adhoc"
         },
         "isActive_": true,
-        "appName_": "ebay",
-        "appID_": "xdk.intel.ad.project",
+        "appName_": "Poster.ly for eBay",
+        "appID_": "posterly.ebay",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -124,21 +167,38 @@
         "cordovaCLIVersion_": "3.3",
         "crosswalkVersion_": "stable",
         "appVersion_": "0.0.1",
-        "appDescription_": ""
+        "appDescription_": "Super fast poster for eBay",
+        "appAuthor_": "Posterly, Inc."
       },
       "Windows8": {
         "platform_": "windows8",
         "runtime_": "Cordova 3.x",
         "name_": "Windows8",
         "preferences_": {
-          "windows-publisher-display-name": "",
+          "windows-publisher-display-name": "Poster.ly",
           "windows-publisher-id": ""
         },
         "isActive_": true,
-        "appName_": "ebay",
-        "appID_": "xdk.intel.ad.project",
+        "appName_": "Poster.ly for eBay",
+        "appID_": "posterly.ebay",
         "appAccess_": "*",
-        "icons_": [],
+        "icons_": [
+          {
+            "relPath": "icon-30.png",
+            "height": 30,
+            "width": 30
+          },
+          {
+            "relPath": "icon-50.png",
+            "height": 50,
+            "width": 50
+          },
+          {
+            "relPath": "icon-150.png",
+            "height": 150,
+            "width": 150
+          }
+        ],
         "splashes_": [],
         "iosProvs_": [],
         "addlPermissions_": "",
@@ -146,7 +206,8 @@
         "cordovaCLIVersion_": "3.3",
         "crosswalkVersion_": "stable",
         "appVersion_": "0.0.0.1",
-        "appDescription_": ""
+        "appDescription_": "Super fast poster for eBay",
+        "appAuthor_": "Posterly, Inc."
       },
       "WindowsPhone8": {
         "platform_": "wp8",
