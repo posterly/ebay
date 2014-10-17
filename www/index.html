@@ -7,7 +7,7 @@
         <head>
                 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
                 <meta charset="UTF-8">
-                <title>Blank App Designer Project Template</title>
+                <title>Poster.ly for Ebay - Post to eBay the easy way!</title>
                 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
                 <meta name="description" content="Poster.ly for eBay">
 
@@ -90,6 +90,56 @@
                             display: table-cell;
                             text-align: center;
                         }
+                  
+                        div.photobox {
+                          height: 120px;
+                          margin: 5px;
+                          text-align: center;
+                          display: inline-block;
+                          background-color: #eee;
+                          line-height: 1.4em;
+                          width: 120px;
+                          vertical-align: middle;
+                          position: relative;
+                          visibility: hidden;
+                        }
+                  
+                        div.photo {
+                          height: 101px;
+                          width: 100%;
+                        }
+                  
+                        div.photobox span.glyphicon {
+                          margin-top: -7px;
+                          margin-left: -7px;
+                          top: 50%;
+                          left: 50%;
+                          position: absolute;
+                        }
+                        
+                        div.existing {
+                          width: 100%;
+                          left: 0px;
+                          bottom: 0px;
+                          position: absolute;
+                          background: #bbb;
+                        }
+                        
+                        div.remove {
+                          position: absolute;
+                          right: 5px;
+                          top: 5px;
+                          width: 16px;
+                          height: 16px;
+                          line-height: 16px;
+                          text-align: center;
+                          font-size: 14px;
+                          background-color: red;
+                          border-color: white;
+                          border-width: 1px;
+                          display: block;
+                          vertical-align: middle;
+                        }
                     
                         button#posterly_submit_button {
                          width: 100%;   
@@ -125,7 +175,9 @@
                 <script src="js/grayscale.js"></script>
             
                 <script>
+                  
                     $(document).ready(function() {
+                      var numBoxes = 1;
                         $('#posterly_name').bind('blur focus',
                                               function (e) {
                          
@@ -136,6 +188,17 @@
                             $('#posterly_category_container span').removeClass('glyphicon-tag');
                              $('#posterly_category_container span').addClass('glyphicon-loading');            
                         });
+                      
+                      $("#addPhoto").bind("click", function (e) {
+                        if (numBoxes >= 1 && numBoxes <= 4) {
+                          document.getElementById("box"+numBoxes).style.visibility = "visible";
+                          numBoxes++;
+                        }
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.returnValue = false;
+                        return false;
+                      });
                     });
                     
                 </script>
@@ -257,7 +320,7 @@
                                 <!-- Brand and toggle get grouped for better mobile display -->
                                 <div class="navbar-header">
                                   
-                                  <a class="navbar-brand" href="#">
+                                  <a id="addPhoto" class="navbar-brand" href="#">
                                       
                                       <span class='glyphicon glyphicon-facetime-video'></span>
                                       
@@ -265,104 +328,53 @@
                                  
                                     </a>
                                 </div>
-
-                                <!-- Collect the nav links, forms, and other content for toggling -->
-                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
-                                  <ul class="nav navbar-nav">
-                                    <li class="active"><a href="#">Photo 1</a></li>
-                                    <li>
-                                        <button>Add another photo</button>
-                                    </li>
-                                  </ul>
-                                </div><!-- /.navbar-collapse -->
-                              </div><!-- /.container-fluid -->
+                          </div>
                             </nav>
                         
                       <!-- Photo Grid Start -->
                       <div class="row">
-                          <div class="col-xs-3 col-md-3">
-                            <button>Photo 1</button>
+                          <div class="col-xs-6 col-md-6">
+                            <div id="box1" class="photobox">
+                              <div class="photo">
+                                <span class="glyphicon glyphicon-camera"></span>
+                              </div>
+                              <div class="existing">Existing</div>
+                              <div class="remove">X</div>
+                            </div>
                           </div>
-                          <div class="col-xs-3 col-md-3">
-                            <button>Photo 2</button>
+                          <div class="col-xs-6 col-md-6">
+                            <div id="box2" class="photobox">
+                              <div class="photo">
+                                <span class="glyphicon glyphicon-camera"></span>
+                              </div>
+                              <div class="existing">Existing</div>
+                              <div class="remove">X</div>
+                            </div>
                           </div>
-                          <div class="col-xs-3 col-md-3">
-                            <button>Photo 3</button>
-                          </div>
-                          <div class="col-xs-3 col-md-3">
-                            <button>Photo 4</button>
-                          </div>
-                      </div>
+                      </div><br />
                       <div class="row">
-                        <div class="col-xs-3 col-md-3">
-                            <button>Photo 5</button>
+                          <div class="col-xs-6 col-md-6">
+                            <div id="box3" class="photobox">
+                              <div class="photo">
+                                <span class="glyphicon glyphicon-camera"></span>
+                              </div>
+                              <div class="existing">Existing</div>
+                              <div class="remove">X</div>
+                            </div>
                           </div>
-                          <div class="col-xs-3 col-md-3">
-                            <button>Photo 6</button>
-                          </div>
-                          <div class="col-xs-3 col-md-3">
-                            <button>Photo 7</button>
-                          </div>
-                          <div class="col-xs-3 col-md-3">
-                            <button>Photo 8</button>
+                          <div class="col-xs-6 col-md-6">
+                            <div id="box4" class="photobox">
+                              <div class="photo">
+                                <span class="glyphicon glyphicon-camera"></span>
+                              </div>
+                              <div class="existing">Existing</div>
+                              <div class="remove">X</div>
+                            </div>
                           </div>
                       </div>
                       <!-- Photo Grid End -->
-                        <div class="">
-                            <ul class="photos-list" >
-
-                                <li>
-                                  <span class="glyphicon glyphicon-asterisk">                                           </span>
-                                  <span class="glyphicon-class">Photo 1</span>
-                                </li>
-
-                                <li>
-                                  <span class="glyphicon glyphicon-plus"></span>
-                                  <span class="glyphicon-class">Photo 2</span>
-                                </li>
-
-                                <li>
-                                  <span class="glyphicon glyphicon-euro"></span>
-                                  <span class="glyphicon-class">Photo 3</span>
-                                </li>
-
-                                <li>
-                                  <span class="glyphicon glyphicon-minus"></span>
-                                  <span class="glyphicon-class">
-                                    Photo 4
-                                    </span>
-                                </li>
-                                
-                                <li>
-                                  <span class="glyphicon glyphicon-minus"></span>
-                                  <span class="glyphicon-class">
-                                    Photo 4
-                                    </span>
-                                </li>
-                                
-                                <li>
-                                  <span class="glyphicon glyphicon-minus"></span>
-                                  <span class="glyphicon-class">
-                                    Photo 4
-                                    </span>
-                                </li>
-                                
-                                <li>
-                                  <span class="glyphicon glyphicon-minus"></span>
-                                  <span class="glyphicon-class">
-                                    Photo 4
-                                    </span>
-                                </li>
-
-
-
-                            </ul>
-                            
-                            <div style='clear:both;'></div>
-                            
-                          </div>
                         
-                            <button id='posterly_submit_button' class='btn btn-default'>
+                      <button id='posterly_submit_button' class='btn btn-default' style="margin-top: 15px;">
                             Post to eBay
                         </button>
                         
