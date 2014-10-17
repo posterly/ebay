@@ -64,7 +64,8 @@
 
                 <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
                 <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-                <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+                
+            <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
 
                 <style>
                         div.container div.input-group {
@@ -89,6 +90,15 @@
                             display: table-cell;
                             text-align: center;
                         }
+                    
+                        button#posterly_submit_button {
+                         width: 100%;   
+                        }
+                    
+                        span.glyphicon-loading {
+                            background: url(img/ajax-loader.gif) #eee no-repeat;
+                            background-position: 8px 8px;
+                        }   
                        
                 </style>
 
@@ -111,12 +121,16 @@
             
                 <script>
                     $(document).ready(function() {
-                        $('#input-name').bind('focus',
+                        $('#posterly_name').bind('blur focus',
                                               function (e) {
                          
-                            alert(1);
-                            
-                        }
+                           // do the api call to search for a category
+                            $('#posterly_category_container').show();
+                            $('#posterly_category_container input[type="text"]')
+                                .attr("placeholder", "Searching...");
+                            $('#posterly_category_container span').removeClass('glyphicon-tag');
+                             $('#posterly_category_container span').addClass('glyphicon-loading');            
+                        });
                     });
                     
                 </script>
@@ -187,11 +201,11 @@
                           <span class="input-group-addon">
                             <span class="glyphicon glyphicon-globe"></span>
                             </span>
-                          <input type="text" class="form-control" placeholder="Item name" id='input-name'>
+                          <input type="text" class="form-control" placeholder="Item name" id='posterly_name'>
                         
                         </div>
 
-                        <div style='display: none;' id='input-category-container' class="input-group">
+                        <div style='display: none;' id='posterly_category_container' class="input-group">
                           <span class="input-group-addon">
                             <span class="glyphicon glyphicon-tag"></span>
                             </span>
@@ -309,8 +323,11 @@
                             
                           </div>
                         
+                            <button id='posterly_submit_button' class='btn btn-default'>
+                            Post to eBay
+                        </button>
                         
-                        
+                        <div style='clear:both;'></div>
                         
                         
                         
