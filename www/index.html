@@ -95,6 +95,31 @@
                 <script type="application/javascript" src="js/jquery.min.js"></script>
                 <script type="application/javascript" src="marginal/marginal-position.min.js"></script>
                 <script type="application/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+            
+            
+                <!-- jQuery Version 1.11.0 -->
+                <script src="js/jquery-1.11.0.js"></script>
+
+                <!-- Bootstrap Core JavaScript -->
+                <script src="js/bootstrap.min.js"></script>
+
+                <!-- Plugin JavaScript -->
+                <script src="js/jquery.easing.min.js"></script>
+
+                <!-- Custom Theme JavaScript -->
+                <script src="js/grayscale.js"></script>
+            
+                <script>
+                    $(document).ready(function() {
+                        $('#input-name').bind('focus',
+                                              function (e) {
+                         
+                            alert(1);
+                            
+                        }
+                    });
+                    
+                </script>
         </head>
 
         <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -162,7 +187,7 @@
                           <span class="input-group-addon">
                             <span class="glyphicon glyphicon-globe"></span>
                             </span>
-                          <input type="text" class="form-control" placeholder="Item name">
+                          <input type="text" class="form-control" placeholder="Item name" id='input-name'>
                         
                         </div>
 
@@ -362,22 +387,6 @@
         </div>
     </footer>
 
-    <!-- jQuery Version 1.11.0 -->
-    <script src="js/jquery-1.11.0.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
-
-    
             
                 <!-- Grayscale end -->
 
