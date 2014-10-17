@@ -346,7 +346,7 @@ body:not(#afui) .upage-outer {
     padding-right: 20px;
   }
 }
-@media all and (min-width: 56px) {
+@media all and (min-width: 320px) {
   .row-height-1 > .col > .content-area {
     min-height: 191px;
   }
