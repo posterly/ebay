@@ -196,8 +196,12 @@
                                                 navigator.camera.getPicture(onSuccess, onFail, { 
             quality: 50,
             destinationType: Camera.DestinationType.FILE_URI,
-            sourceType: Camera.PictureSourceType
+            sourceType: Camera.PictureSourceType.CAMERA,
+            targetWidth: 100,
+            targetHeight: 100,
+            encodingType: Camera.EncodingType.JPEG
             });
+                          //http://epilepsyapp.wordpress.com/2012/04/25/348/
 
             function onSuccess(imageURI) {
                 var image = document.getElementById('img' + (numBoxes-1));
