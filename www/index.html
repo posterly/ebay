@@ -173,6 +173,11 @@
                 <script>
                   
                     $(document).ready(function() {
+                        
+                    $('.navbar-toggle').click(function(e) {
+                        $('.navbar-main-collapse').toggle('slow'); 
+                    });
+                        
                       var numBoxes = 1;
                         $('#posterly_name').bind('blur focus',
                                               function (e) {
@@ -241,11 +246,11 @@
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    <i style='color: #fff;' class="fa fa-bars"></i>
+                <button type="button" class="navbar-toggle">
+                    <i style='color: #fff;' class="glyphicon glyphicon-align-justify"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i>  <span class="light">Posterly</span> eBay
+                    <i class="glyphicon glyphicon-camera"></i>  <span class="light">Posterly</span> eBay
                 </a>
             </div>
 
