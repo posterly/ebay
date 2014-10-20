@@ -152,6 +152,7 @@
             background-color: white;
             display: none;
             width: 90%;
+            max-width: 300px;
         }
         button#posterly_submit_button {
             width: 100%;
@@ -178,18 +179,36 @@
 
 
     <script>
-        
         var EbayForm = this.EbayForm = {
-            submit: function() {
-                alert(1);   
-            }
-            
+            submit: function () {
+                alert(1);
+            },
+
+            bind_login_button: function () {
+                $('#posterly_login_button').click(function (e) {});
+            },
+
+            bind_login_form: function () {
+                //executed on login form submit onsubmit handler
+                var ebay_username = $('#posterly_ebay_username').val();
+                var ebay_password = $('#posterly_ebay_password').val();
+
+                $.ajax("http://localhost:8000/api/users/", {
+                    type: "POST",
+                    data: { 'username': ebay_username, 'password': ebay_password, 'email': 'null@null.com', 'is_staff': false },
+                    success: function(data) { alert(data); },
+                    failure: function(data) { alert(data); }
+                });
+                
+                return false;
+            },
+
         }
-        
-        
+
+
         $(document).ready(function () {
 
-            $('.navbar-toggle').click(function (e) {
+            $('.navbar-toggle-top').click(function (e) {
                 $('.navbar-main-collapse').toggle('slow');
             });
 
@@ -269,7 +288,7 @@
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle">
+                <button type="button" class="navbar-toggle navbar-toggle-top">
                     <i style="color: #fff;" class="glyphicon glyphicon-th-list"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
@@ -365,7 +384,7 @@
                                 </div>
                                 <!-- /.container -->
                             </nav>
-                            <form onsubmit='EbayForm.submit(); return false;'>
+                            <form onsubmit='EbayForm.bind_login_form(); return false;'>
                                 <div style="padding: 10px;">
                                     <div class="form-group">
                                         <div class="input-group">
