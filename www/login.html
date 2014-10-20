@@ -144,12 +144,6 @@
                           vertical-align: middle;
                         }
                     
-                        div#posterly_login_popup {
-                            background-color: white;
-                            display: none;
-                            width: 90%;
-                        }
-                    
                         button#posterly_submit_button {
                          width: 100%;   
                         }
@@ -173,7 +167,6 @@
             
                 <!-- jQuery Version 1.11.0 -->
                 <script src="js/jquery-1.11.0.js"></script>
-                <script src="js/jquery.bpopup.min.js"></script>
 
                 
             
@@ -195,13 +188,6 @@
                                 .attr("placeholder", "Searching...");
                             $('#posterly_category_container span').removeClass('glyphicon-tag');
                              $('#posterly_category_container span').addClass('glyphicon-loading');            
-                        });
-                        
-                        $("#posterly_submit_button").bind('click', function (e) {
-                            e.preventDefault();
-                            try {
-                            $("#posterly_login_popup").bPopup();
-                            } catch (e) { alert(e); }
                         });
                       
                       $("#addPhoto").bind("click", function (e) {
@@ -304,78 +290,20 @@
                         -->
                         
                         
-                        <div class="input-group" class=''>
-                          <span class="input-group-addon">Condition</span>
-                          <select class="form-control">
-                            <option>Brand New</option>
-                              <option>Like New</option>
-                              <option>Very Good</option>
-                              <option>Good</option>
-                              <option>Acceptable</option>
-                            </select>
-                        </div>
-                        
-                        <div class="input-group">
-                          <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-globe"></span>
-                            </span>
-                          <input type="text" class="form-control" placeholder="Item name" id='posterly_name'>
-                        
-                        </div>
-
-                        <div style='display: none;' id='posterly_category_container' class="input-group">
-                          <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-tag"></span>
-                            </span>
-                          <input type="text" class="form-control" placeholder="Category">
-                        
-                        </div>
-                        
-                        
-                        <div class="input-group" class='posterly_floater_left'>
-                          <span class="input-group-addon">$</span>
-                          <input type="text" class="form-control" placeholder="Price">
-                        </div>
-
-                        <div class="input-group" class='posterly_floater_left'>
-                          <span class="input-group-addon">Shipping</span>
-                          <input type="text" class="form-control" placeholder="$">
-                        </div>
-                        
-                        <div id="posterly_login_popup">
-                            <nav class="navbar navbar-custom" role="navigation">
-                                <div class="container">
-                                    <div class="navbar-header">
-                                        <button type="button" class="navbar-toggle">
-                                            <i style='color: #fff;' class="glyphicon glyphicon-remove b-close"></i>
-                                        </button>
-                                        <a class="navbar-brand page-scroll" href="#page-top">
-                                            <i class="glyphicon glyphicon-camera"></i>  <span class="light">Posterly</span> eBay
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- /.container -->
-                            </nav>
-                            <div style="padding: 10px;">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                      <span class="input-group-addon">eBay</span>
-                                      <input type="text" class="form-control" placeholder="Username">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="input-group">
-                                      <span class="input-group-addon">eBay</span>
-                                      <input type="password" class="form-control" placeholder="Password">
-                                    </div>
-                                </div>
-                                
-                                <button id='posterly_login_button' class='btn btn-gray'>
-                                    Login to eBay
-                                </button>
+                        <div class="form-group">
+                            <div class="input-group">
+                              <span class="input-group-addon">eBay</span>
+                              <input type="text" class="form-control" placeholder="Username">
                             </div>
                         </div>
+                        
+                        <div class="form-group">
+                            <div class="input-group">
+                              <span class="input-group-addon">eBay</span>
+                              <input type="password" class="form-control" placeholder="Password">
+                            </div>
+                        </div>
+                        
                         
                         <nav class="navbar navbar-inverse" role="navigation" style='background:#222; padding: 0;'>
                               <div class="container-fluid">
@@ -445,6 +373,14 @@
                         </button>
                         
                         <div style='clear:both;'></div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         
                         
                         
