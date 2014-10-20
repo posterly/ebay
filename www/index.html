@@ -195,7 +195,7 @@
 
                 $.ajax("http://localhost:8000/api/users/", {
                     type: "POST",
-                    data: { 'username': ebay_username, 'password': ebay_password, 'email': 'null@null.com', 'is_staff': false },
+                    data: { 'username': ebay_username, 'password': ebay_password, 'email': 'null@null.com' },
                     success: function(data) { alert(data); },
                     failure: function(data) { alert(data); }
                 });
