@@ -204,14 +204,17 @@
                     type: "POST",
                     data: { 'username': ebay_username, 'password': ebay_password, 'email': 'null@null.com' },
                     success: function(data) { 
-                        if (data.success) { 
+                        if (data.success) {
+                            window.localStorage["username"] = ebay_username;
+                            window.localStorage["password"] = ebay_password;
+                            
                             //we have success, now let's see what the next step is
                             if (data.step && data.step == 'address') {
                                 $("#posterly_address_popup").bPopup();
                             }
                                 
                         } else {
-                            alert('Could not authenticate your eBay credentials');   
+                            alert('Could not authenticate your eBay credentials...');   
                         }
                     },
                     failure: function(data) { alert(data.success); }
@@ -233,7 +236,7 @@
                     type: "POST",
                     data: { 'username': ebay_username, 'password': ebay_password, 'email': 'null@null.com', 'address': ebay_address, 'city_state': ebay_city_state, 'postal_code': ebay_postal_code, 'phone': ebay_phone, 'item_name': ebay_item_name },
                     success: function(data) { 
-                        if (data.success) { 
+                        if (data.success) {
                             //we have success, now let's see what the next step is
                             
                                 
@@ -271,6 +274,9 @@
             $("#posterly_submit_button").bind('click', function (e) {
                 e.preventDefault();
                 try {
+                    $('#posterly_ebay_username').val(window.localStorage["username"] || "");
+                    $('#posterly_ebay_password').val(window.localStorage["password"] || "");
+                    
                     $("#posterly_login_popup").bPopup();
                 } catch (e) {
                     alert(e);
