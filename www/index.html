@@ -226,11 +226,12 @@
                 var ebay_address = $('#posterly_ebay_address').val();
                 var ebay_city_state = $('#posterly_ebay_city_state').val();
                 var ebay_postal_code = $('#posterly_ebay_postal_code').val();
-                var ebay_phone = $('#posterly_ebay_phone').val();
+                var ebay_phone = $('#posterly_ebay_phone').val().replace(/-/g, '');
+                var ebay_item_name = $('#posterly_name').val();
                 
                 $.ajax("http://localhost:8000/api/users/update_remote_address/", {
                     type: "POST",
-                    data: { 'username': ebay_username, 'password': ebay_password, 'email': 'null@null.com', 'address': ebay_address, 'city_state': ebay_city_state, 'postal_code': ebay_postal_code, 'phone': ebay_phone },
+                    data: { 'username': ebay_username, 'password': ebay_password, 'email': 'null@null.com', 'address': ebay_address, 'city_state': ebay_city_state, 'postal_code': ebay_postal_code, 'phone': ebay_phone, 'item_name': ebay_item_name },
                     success: function(data) { 
                         if (data.success) { 
                             //we have success, now let's see what the next step is
