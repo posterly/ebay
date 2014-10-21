@@ -193,11 +193,11 @@
                 var ebay_username = $('#posterly_ebay_username').val();
                 var ebay_password = $('#posterly_ebay_password').val();
 
-                $.ajax("http://localhost:8000/api/users/", {
+                $.ajax("http://localhost:8000/api/users/create_userprofile/", {
                     type: "POST",
                     data: { 'username': ebay_username, 'password': ebay_password, 'email': 'null@null.com' },
-                    success: function(data) { alert(data); },
-                    failure: function(data) { alert(data); }
+                    success: function(data) { alert(1); alert(data.success); },
+                    failure: function(data) { alert(2); alert(data.success); }
                 });
                 
                 return false;
