@@ -148,12 +148,15 @@
             display: block;
             vertical-align: middle;
         }
-        div#posterly_login_popup {
+        
+        
+        div.popup, div#posterly_login_popup {
             background-color: white;
             display: none;
             width: 90%;
             max-width: 300px;
         }
+        
         button#posterly_submit_button {
             width: 100%;
         }
@@ -165,6 +168,10 @@
             float: left;
             width: 49%;
         }
+        
+        
+        
+        
     </style>
 
     <script type="application/javascript" src="js/jquery.min.js"></script>
@@ -192,13 +199,23 @@
                 //executed on login form submit onsubmit handler
                 var ebay_username = $('#posterly_ebay_username').val();
                 var ebay_password = $('#posterly_ebay_password').val();
-
+                
                 $.ajax("http://localhost:8000/api/users/create_userprofile/", {
                     type: "POST",
                     data: { 'username': ebay_username, 'password': ebay_password, 'email': 'null@null.com' },
-                    success: function(data) { alert(1); alert(data.success); },
-                    failure: function(data) { alert(2); alert(data.success); }
+                    success: function(data) { 
+                        if (data.success) { 
+                            //we have success, now let's see what the next step is
+                            
+                                
+                        } else {
+                            alert('Could not authenticate your eBay credentials');   
+                        }
+                    },
+                    failure: function(data) { alert(data.success); }
                 });
+                
+                alert(20);
                 
                 return false;
             },
@@ -369,8 +386,61 @@
                             <span class="input-group-addon">Shipping</span>
                             <input type="text" class="form-control" placeholder="$">
                         </div>
+                        
+                        
+                        <div class='popup' id="posterly_cc_popup">
+                            <nav class="navbar navbar-custom" role="navigation">
+                                <div class="container">
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle">
+                                            <i style='color: #fff;' class="glyphicon glyphicon-remove b-close"></i>
+                                        </button>
+                                        <a class="navbar-brand page-scroll" href="#page-top">
+                                            <i class="glyphicon glyphicon-camera"></i>  <span class="light">Posterly</span> eBay
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- /.container -->
+                            </nav>
+                            <form onsubmit='EbayForm.bind_cc_form(); return false;'>
+                                <div style="padding: 10px;">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Name</span>
+                                            <input id='posterly_cc_name' type="text" class="form-control" placeholder="Name on card">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">#</span>
+                                            <input id='posterly_cc_number' type="text" class="form-control" placeholder="Credit card #">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Exp.</span>
+                                            <input id='posterly_cc_expiration' type="text" class="form-control" placeholder="MM/YY">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">CSV</span>
+                                            <input id='posterly_cc_csv' type="text" class="form-control" placeholder="###">
+                                        </div>
+                                    </div>
 
-                        <div id="posterly_login_popup">
+                                    <button id='posterly_login_button' class='btn btn-gray'>
+                                        Update eBay Credit Card
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        
+                        <div class='popup' id="posterly_login_popup">
                             <nav class="navbar navbar-custom" role="navigation">
                                 <div class="container">
                                     <div class="navbar-header">
