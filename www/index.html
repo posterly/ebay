@@ -182,8 +182,18 @@
 
     <script>
         var EbayForm = this.EbayForm = {
-            submit: function () {
-                alert(1);
+            bind_submit: function () {
+
+                try {
+                    $('#posterly_ebay_username').val(window.localStorage["username"] || "");
+                    $('#posterly_ebay_password').val(window.localStorage["password"] || "");
+
+                    $("#posterly_login_popup").bPopup();
+                } catch (e) {
+                    alert(e);
+                }
+
+
             },
 
             bind_login_button: function () {
@@ -279,18 +289,6 @@
 
             var numBoxes = 1;
 
-            $("#posterly_submit_button").bind('click', function (e) {
-                e.preventDefault();
-                try {
-                    $('#posterly_ebay_username').val(window.localStorage["username"] || "");
-                    $('#posterly_ebay_password').val(window.localStorage["password"] || "");
-
-                    $("#posterly_login_popup").bPopup();
-                } catch (e) {
-                    alert(e);
-                }
-            });
-
             $("#addPhoto").bind("click", function (e) {
 
                 $('div.photobox_container').show();
@@ -378,7 +376,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <!--
+
+                        <form method='post' onsubmit='EbayForm.bind_submit(); return false;'>
+
+                            <!--
                         <h1 class="brand-heading">
                             Poster.ly for Ebay
                         </h1>
@@ -388,107 +389,107 @@
                         -->
 
 
-                        <div class="input-group" class="">
-                            <span class="input-group-addon">Condition</span>
-                            <select class="form-control">
-                                <option>Brand New</option>
-                                <option>Like New</option>
-                                <option>Very Good</option>
-                                <option>Good</option>
-                                <option>Acceptable</option>
-                            </select>
-                        </div>
+                            <div class="input-group" class="">
+                                <span class="input-group-addon">Condition</span>
+                                <select class="form-control">
+                                    <option>Brand New</option>
+                                    <option>Like New</option>
+                                    <option>Very Good</option>
+                                    <option>Good</option>
+                                    <option>Acceptable</option>
+                                </select>
+                            </div>
 
-                        <div class="input-group">
-                            <span class="input-group-addon">
+                            <div class="input-group">
+                                <span class="input-group-addon">
                             <span class="glyphicon glyphicon-globe"></span>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Item name" required id="posterly_name">
+                                </span>
+                                <input required type="text" class="form-control" placeholder="Item name" required id="posterly_name">
 
-                        </div>
-
-                        <div class="input-group" class='posterly_floater_left'>
-                            <span class="input-group-addon">$</span>
-                            <input type="text" class="form-control" placeholder="Price">
-                        </div>
-
-                        <div class="input-group" class='posterly_floater_left'>
-                            <span class="input-group-addon">$</span>
-                            <input type="text" class="form-control" placeholder="Shipping">
-                        </div>
-
-
-
-                        <nav class="navbar navbar-inverse" role="navigation" style='background:#222; padding: 0;'>
-                            <div class="container-fluid">
-                                <!-- Brand and toggle get grouped for better mobile display -->
-                                <div class="navbar-header">
-
-                                    <a id="addPhoto" class="navbar-brand" href="#">
-
-                                        <span class='glyphicon glyphicon-facetime-video'></span>
-                                        Add a Photo
-
-                                    </a>
-                                </div>
                             </div>
-                        </nav>
 
-                        <!-- Photo Grid Start -->
-                        <div class="row photobox_container">
-                            <div class="col-xs-6 col-md-6 photobox_container">
-                                <div id="box1" class="photobox">
-                                    <div class="photo" style='overflow: hidden;'>
-                                        <span class="glyphicon glyphicon-camera"></span>
-                                        <img id="img1" width='100%' height='100%' />
+                            <div class="input-group" class='posterly_floater_left'>
+                                <span class="input-group-addon">$</span>
+                                <input required type="text" class="form-control" placeholder="Price">
+                            </div>
+
+                            <div class="input-group" class='posterly_floater_left'>
+                                <span class="input-group-addon">$</span>
+                                <input required type="text" class="form-control" placeholder="Shipping">
+                            </div>
+
+
+
+                            <nav class="navbar navbar-inverse" role="navigation" style='background:#222; padding: 0;'>
+                                <div class="container-fluid">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                    <div class="navbar-header">
+
+                                        <a id="addPhoto" class="navbar-brand" href="#">
+
+                                            <span class='glyphicon glyphicon-facetime-video'></span>
+                                            Add a Photo
+
+                                        </a>
                                     </div>
-                                    <div class="existing">Existing</div>
-                                    <div class="remove">X</div>
                                 </div>
-                            </div>
-                            <div class="col-xs-6 col-md-6">
-                                <div id="box2" class="photobox">
-                                    <div class="photo">
-                                        <span class="glyphicon glyphicon-camera"></span>
-                                        <img id="img2" width='100%' height='100%' />
+                            </nav>
+
+                            <!-- Photo Grid Start -->
+                            <div class="row photobox_container">
+                                <div class="col-xs-6 col-md-6 photobox_container">
+                                    <div id="box1" class="photobox">
+                                        <div class="photo" style='overflow: hidden;'>
+                                            <span class="glyphicon glyphicon-camera"></span>
+                                            <img id="img1" width='100%' height='100%' />
+                                        </div>
+                                        <div class="existing">Existing</div>
+                                        <div class="remove">X</div>
                                     </div>
-                                    <div class="existing">Existing</div>
-                                    <div class="remove">X</div>
                                 </div>
-                            </div>
-                        </div>
-                        <br />
-                        <div class="row">
-                            <div class="col-xs-6 col-md-6">
-                                <div id="box3" class="photobox">
-                                    <div class="photo">
-                                        <span class="glyphicon glyphicon-camera"></span>
-                                        <img id="img3" width='100%' height='100%' />
+                                <div class="col-xs-6 col-md-6">
+                                    <div id="box2" class="photobox">
+                                        <div class="photo">
+                                            <span class="glyphicon glyphicon-camera"></span>
+                                            <img id="img2" width='100%' height='100%' />
+                                        </div>
+                                        <div class="existing">Existing</div>
+                                        <div class="remove">X</div>
                                     </div>
-                                    <div class="existing">Existing</div>
-                                    <div class="remove">X</div>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-md-6">
-                                <div id="box4" class="photobox">
-                                    <div class="photo">
-                                        <span class="glyphicon glyphicon-camera"></span>
-                                        <img id="img4" width='100%' height='100%' />
+                            <br />
+                            <div class="row">
+                                <div class="col-xs-6 col-md-6">
+                                    <div id="box3" class="photobox">
+                                        <div class="photo">
+                                            <span class="glyphicon glyphicon-camera"></span>
+                                            <img id="img3" width='100%' height='100%' />
+                                        </div>
+                                        <div class="existing">Existing</div>
+                                        <div class="remove">X</div>
                                     </div>
-                                    <div class="existing">Existing</div>
-                                    <div class="remove">X</div>
+                                </div>
+                                <div class="col-xs-6 col-md-6">
+                                    <div id="box4" class="photobox">
+                                        <div class="photo">
+                                            <span class="glyphicon glyphicon-camera"></span>
+                                            <img id="img4" width='100%' height='100%' />
+                                        </div>
+                                        <div class="existing">Existing</div>
+                                        <div class="remove">X</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Photo Grid End -->
+                            <!-- Photo Grid End -->
 
-                        <button id='posterly_submit_button' class='btn btn-gray' style="">
-                            Post to eBay
-                        </button>
+                            <button id='posterly_submit_button' class='btn btn-gray' type='submit' style="">
+                                Post to eBay
+                            </button>
 
-                        <div style='clear:both;'></div>
+                            <div style='clear:both;'></div>
 
-
+                        </form>
 
 
                         <a href="#about" class="btn btn-circle page-scroll">
