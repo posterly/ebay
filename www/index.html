@@ -226,6 +226,11 @@
 
                             if (data.step && data.step == 'category') {
                                 $("#posterly_category_popup").bPopup();
+
+                                if (data.first_category_text && data.first_category_id) {
+                                    $('#posterly_category_name').val(data.first_category_text);
+                                    $('#posterly_category_id').val(data.first_category_id);
+                                }
                             }
 
                         } else {
@@ -625,21 +630,10 @@
             <div style="padding: 10px;">
                 <div class="form-group">
                     <div class="input-group">
-                        <span class="input-group-addon">eBay</span>
+                        <span class="input-group-addon">Category</span>
+                        <input id='posterly_category_name' type="text" class="form-control" placeholder="Category name" />
+                        <input type='hidden' id='posterly_category_id' value='' />
                     </div>
-
-
-                    <div id='posterly_category_container' class="input-group">
-                        <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-tag"></span>
-                        </span>
-                        <select id='posterly_ebay_category' type="text" class="form-control" placeholder="Category">
-                        </select>
-
-                    </div>
-
-
-
                 </div>
 
                 <button id='posterly_address_button' class='btn btn-gray'>
