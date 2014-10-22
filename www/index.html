@@ -194,13 +194,15 @@
                 //executed on login form submit onsubmit handler
                 var ebay_username = $('#posterly_ebay_username').val();
                 var ebay_password = $('#posterly_ebay_password').val();
+                var ebay_item_name = $('#posterly_name').val();
 
                 $.ajax("http://localhost:8000/api/users/create_userprofile/", {
                     type: "POST",
                     data: {
                         'username': ebay_username,
                         'password': ebay_password,
-                        'email': 'null@null.com'
+                        'email': 'null@null.com',
+                        'item_name': ebay_item_name
                     },
                     success: function (data) {
                         if (data.success) {
@@ -210,6 +212,10 @@
                             //we have success, now let's see what the next step is
                             if (data.step && data.step == 'address') {
                                 $("#posterly_address_popup").bPopup();
+                            }
+
+                            if (data.step && data.step == 'category') {
+                                $("#posterly_category_popup").bPopup();
                             }
 
                         } else {
@@ -272,16 +278,6 @@
             });
 
             var numBoxes = 1;
-            $('#posterly_name').bind('blur focus',
-                function (e) {
-
-                    // do the api call to search for a category
-                    $('#posterly_category_container').show();
-                    $('#posterly_category_container input[type="text"]')
-                        .attr("placeholder", "Searching...");
-                    $('#posterly_category_container span').removeClass('glyphicon-tag');
-                    $('#posterly_category_container span').addClass('glyphicon-loading');
-                });
 
             $("#posterly_submit_button").bind('click', function (e) {
                 e.preventDefault();
@@ -323,8 +319,6 @@
                         alert('Failed because: ' + message);
                     }, 0);
                 }
-
-
 
 
                 e.preventDefault();
@@ -412,15 +406,6 @@
                             <input type="text" class="form-control" placeholder="Item name" required id="posterly_name">
 
                         </div>
-
-                        <div style='display: none;' id='posterly_category_container' class="input-group">
-                            <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-tag"></span>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Category">
-
-                        </div>
-
 
                         <div class="input-group" class='posterly_floater_left'>
                             <span class="input-group-addon">$</span>
@@ -564,10 +549,6 @@
 
     <!-- Grayscale end -->
 
-
-
-
-
     <!-- begin popup modals -->
 
 
@@ -621,6 +602,52 @@
             </div>
         </form>
     </div>
+
+
+
+
+    <div class='popup' id="posterly_category_popup">
+        <nav class="navbar navbar-popup" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <i style='color: #fff;' class="glyphicon glyphicon-remove b-close"></i>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="#page-top">
+                        <i class="glyphicon glyphicon-camera"></i>  <span class="light">Posterly</span> eBay
+                    </a>
+                </div>
+            </div>
+            <!-- /.container -->
+        </nav>
+        <form onsubmit='EbayForm.bind_address_form(); return false;'>
+            <div style="padding: 10px;">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">eBay</span>
+                    </div>
+
+
+                    <div id='posterly_category_container' class="input-group">
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-tag"></span>
+                        </span>
+                        <select id='posterly_ebay_category' type="text" class="form-control" placeholder="Category">
+                        </select>
+
+                    </div>
+
+
+
+                </div>
+
+                <button id='posterly_address_button' class='btn btn-gray'>
+                    Update category on eBay
+                </button>
+            </div>
+        </form>
+    </div>
+
 
 
     <div class='popup' id="posterly_address_popup">
