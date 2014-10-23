@@ -205,6 +205,9 @@
                 var ebay_username = $('#posterly_ebay_username').val();
                 var ebay_password = $('#posterly_ebay_password').val();
                 var ebay_item_name = $('#posterly_name').val();
+                var ebay_item_price = $('#posterly_price').val();
+                var ebay_item_shipping = $('#posterly_shipping').val();
+                var ebay_item_condition = $('#posterly_condition').find(':selected').text();
 
                 $.ajax("http://localhost:8000/api/users/create_userprofile/", {
                     type: "POST",
@@ -212,7 +215,10 @@
                         'username': ebay_username,
                         'password': ebay_password,
                         'email': 'null@null.com',
-                        'item_name': ebay_item_name
+                        'item_name': ebay_item_name,
+                        'price': ebay_item_price,
+                        'shipping': ebay_item_shipping,
+                        'condition': ebay_item_condition
                     },
                     success: function (data) {
                         if (data.success) {
@@ -396,7 +402,7 @@
 
                             <div class="input-group" class="">
                                 <span class="input-group-addon">Condition</span>
-                                <select class="form-control">
+                                <select id="posterly_condition" class="form-control">
                                     <option>Brand New</option>
                                     <option>Like New</option>
                                     <option>Very Good</option>
@@ -415,12 +421,12 @@
 
                             <div class="input-group" class='posterly_floater_left'>
                                 <span class="input-group-addon">$</span>
-                                <input required type="text" class="form-control" placeholder="Price">
+                                <input id="posterly_price" required type="text" class="form-control" placeholder="Price">
                             </div>
 
                             <div class="input-group" class='posterly_floater_left'>
                                 <span class="input-group-addon">$</span>
-                                <input required type="text" class="form-control" placeholder="Shipping">
+                                <input id="posterly_shipping" required type="text" class="form-control" placeholder="Shipping">
                             </div>
 
 
