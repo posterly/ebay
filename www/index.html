@@ -209,8 +209,33 @@
                 var ebay_item_shipping = $('#posterly_shipping').val();
                 var ebay_item_condition = $('#posterly_condition').find(':selected').text();
                 var ebay_item_photo = $('#box1').prop('src');
+                
+                var options = new FileUploadOptions();
+                options.fileKey='file';
+                options.fileName=ebay_item_photo.substr(ebay_item_photo.lastIndexOf('/')+1);
+                options.mimeType="text/plain";
+                
+                var params = new Object();
+                params.username = ebay_username;
+                params.password = ebay_password;
+                params.item_name = ebay_item_name;
+                params.price = ebay_item_price;
+                params.shipping = ebay_item_shipping;
+                params.condition = ebay_item_condition;
+                
+                options.params = params;
+                
+                var ft = new FileTransfer();
+                ft.upload(ebay_item_photo, "http://localhost:8000/api/users/create_userprofile/",
+                    function win(e) {
+                        alert(e.response);
+                    },
+                    function fail(e) {
+                        alert(e.source);
+                    },
+                    options);
 
-                $.ajax("http://localhost:8000/api/users/create_userprofile/", {
+                /*$.ajax("http://localhost:8000/api/users/create_userprofile/", {
                     type: "POST",
                     data: {
                         'username': ebay_username,
@@ -233,12 +258,12 @@
                             }
 
                             if (data.step && data.step == 'category') {
-                                /*$("#posterly_category_popup").bPopup();
+                                $("#posterly_category_popup").bPopup();
 
                                 if (data.first_category_text && data.first_category_id) {
                                     $('#posterly_category_name').val(data.first_category_text);
                                     $('#posterly_category_id').val(data.first_category_id);
-                                }*/
+                                }
                             }
 
                         } else {
@@ -248,7 +273,7 @@
                     failure: function (data) {
                         alert(data.success);
                     }
-                });
+                });*/
 
                 return false;
             },
