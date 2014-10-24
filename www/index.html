@@ -233,12 +233,12 @@
                             }
 
                             if (data.step && data.step == 'category') {
-                                $("#posterly_category_popup").bPopup();
+                                /*$("#posterly_category_popup").bPopup();
 
                                 if (data.first_category_text && data.first_category_id) {
                                     $('#posterly_category_name').val(data.first_category_text);
                                     $('#posterly_category_id').val(data.first_category_id);
-                                }
+                                }*/
                             }
 
                         } else {
@@ -305,7 +305,7 @@
             $("#addPhoto").bind("click", function (e) {
 
                 $('div.photobox_container').show();
-                if (numBoxes >= 1 && numBoxes <= 4) {
+                if (numBoxes >= 1 && numBoxes <= 1) {
                     document.getElementById("box" + numBoxes).style.display = "inline-block";
                     numBoxes++;
                 }
