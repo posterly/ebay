@@ -208,72 +208,77 @@
                 var ebay_item_price = $('#posterly_price').val();
                 var ebay_item_shipping = $('#posterly_shipping').val();
                 var ebay_item_condition = $('#posterly_condition').find(':selected').text();
-                var ebay_item_photo = $('#box1').prop('src');
-                
-                var options = new FileUploadOptions();
-                options.fileKey='file';
-                options.fileName=ebay_item_photo.substr(ebay_item_photo.lastIndexOf('/')+1);
-                options.mimeType="text/plain";
-                
-                var params = new Object();
-                params.username = ebay_username;
-                params.password = ebay_password;
-                params.item_name = ebay_item_name;
-                params.price = ebay_item_price;
-                params.shipping = ebay_item_shipping;
-                params.condition = ebay_item_condition;
-                
-                options.params = params;
-                
-                var ft = new FileTransfer();
-                ft.upload(ebay_item_photo, "http://localhost:8000/api/users/create_userprofile/",
-                    function win(e) {
-                        alert(e.response);
-                    },
-                    function fail(e) {
-                        alert(e.source);
-                    },
-                    options);
+                var ebay_item_photo = $('#img1').prop('src');
 
-                /*$.ajax("http://localhost:8000/api/users/create_userprofile/", {
-                    type: "POST",
-                    data: {
-                        'username': ebay_username,
-                        'password': ebay_password,
-                        'email': 'null@null.com',
-                        'item_name': ebay_item_name,
-                        'price': ebay_item_price,
-                        'shipping': ebay_item_shipping,
-                        'condition': ebay_item_condition,
-                        'photo': ebay_item_photo
-                    },
-                    success: function (data) {
-                        if (data.success) {
-                            window.localStorage["username"] = ebay_username;
-                            window.localStorage["password"] = ebay_password;
+                //Get the image to upload
+                var pictureURL = intel.xdk.camera.getPictureURL(ebay_item_photo);
+                intel.xdk.file.uploadToServer(pictureURL, "http://localhost:8000/api/users/upload_photo/", "", "image/jpeg", "updateUploadProgress");
 
-                            //we have success, now let's see what the next step is
-                            if (data.step && data.step == 'address') {
-                                $("#posterly_address_popup").bPopup();
-                            }
+                function updateUploadProgress(bytesSent, totalBytes) {
+                    if (totalBytes > 0)
+                        currentProgress = (bytesSent / totalBytes) * 100;
+                    console.info(currentProgress + "%");
+                }
 
-                            if (data.step && data.step == 'category') {
-                                $("#posterly_category_popup").bPopup();
+                document.addEventListener("intel.xdk.file.upload.busy", uploadBusy);
+                document.addEventListener("intel.xdk.file.upload", uploadComplete);
+                document.addEventListener("intel.xdk.file.upload.cancel", uploadCancelled);
+
+                function uploadBusy(evt) {
+                    alert("Sorry, a file is already being uploaded");
+                }
+
+                function uploadComplete(evt) {
+                    if (evt.success == true) {
+                        alert("File " + evt.localURL + " was uploaded");
+
+                        $.ajax("http://localhost:8000/api/users/create_userprofile/", {
+                            type: "POST",
+                            data: {
+                                'username': ebay_username,
+                                'password': ebay_password,
+                                'email': 'null@null.com',
+                                'item_name': ebay_item_name,
+                                'price': ebay_item_price,
+                                'shipping': ebay_item_shipping,
+                                'condition': ebay_item_condition,
+                                'photo': evt.remoteURL
+                            },
+                            success: function (data) {
+                                if (data.success) {
+                                    window.localStorage["username"] = ebay_username;
+                                    window.localStorage["password"] = ebay_password;
+
+                                    //we have success, now let's see what the next step is
+                                    if (data.step && data.step == 'address') {
+                                        $("#posterly_address_popup").bPopup();
+                                    }
+
+                                    if (data.step && data.step == 'category') {
+                                        /*$("#posterly_category_popup").bPopup();
 
                                 if (data.first_category_text && data.first_category_id) {
                                     $('#posterly_category_name').val(data.first_category_text);
                                     $('#posterly_category_id').val(data.first_category_id);
-                                }
-                            }
+                                }*/
+                                    }
 
-                        } else {
-                            alert('Could not authenticate your eBay credentials...');
-                        }
-                    },
-                    failure: function (data) {
-                        alert(data.success);
+                                } else {
+                                    alert('Could not authenticate your eBay credentials...');
+                                }
+                            },
+                            failure: function (data) {
+                                alert(data.success);
+                            }
+                        });
+                    } else {
+                        alert("Error uploading file " + evt.message);
                     }
-                });*/
+                }
+
+                function uploadCancelled(evt) {
+                    alert("File upload was cancelled " + evt.localURL);
+                }
 
                 return false;
             },
