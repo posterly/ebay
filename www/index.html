@@ -208,6 +208,7 @@
                 var ebay_item_price = $('#posterly_price').val();
                 var ebay_item_shipping = $('#posterly_shipping').val();
                 var ebay_item_condition = $('#posterly_condition').find(':selected').text();
+                var ebay_item_photo = $('#box1').prop('src');
 
                 $.ajax("http://localhost:8000/api/users/create_userprofile/", {
                     type: "POST",
@@ -218,7 +219,8 @@
                         'item_name': ebay_item_name,
                         'price': ebay_item_price,
                         'shipping': ebay_item_shipping,
-                        'condition': ebay_item_condition
+                        'condition': ebay_item_condition,
+                        'photo': ebay_item_photo
                     },
                     success: function (data) {
                         if (data.success) {
