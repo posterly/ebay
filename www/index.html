@@ -211,74 +211,55 @@
                 var ebay_item_photo = $('#img1').prop('src');
 
                 //Get the image to upload
-                var pictureURL = intel.xdk.camera.getPictureURL(ebay_item_photo);
-                intel.xdk.file.uploadToServer(pictureURL, "http://localhost:8000/api/users/upload_photo/", "", "image/jpeg", "updateUploadProgress");
+                var base64_photo = ebay_item_photo.substring(ebay_item_photo.lastIndexOf(",") + 1);
 
-                function updateUploadProgress(bytesSent, totalBytes) {
-                    if (totalBytes > 0)
-                        currentProgress = (bytesSent / totalBytes) * 100;
-                    console.info(currentProgress + "%");
-                }
+                $.ajax("http://localhost:8000/api/users/upload_photo/", {
+                    type: "POST",
+                    data: {
+                        'base64Photo': base64_photo
+                    },
+                    success: function (data) {
+                        if (data.success) {
+                            $.ajax("http://localhost:8000/api/users/create_userprofile/", {
+                                type: "POST",
+                                data: {
+                                    'username': ebay_username,
+                                    'password': ebay_password,
+                                    'email': 'null@null.com',
+                                    'item_name': ebay_item_name,
+                                    'price': ebay_item_price,
+                                    'shipping': ebay_item_shipping,
+                                    'condition': ebay_item_condition,
+                                    'photo': evt.remoteURL
+                                },
+                                success: function (data) {
+                                    if (data.success) {
+                                        //window.localStorage["username"] = ebay_username;
+                                        //window.localStorage["password"] = ebay_password;
 
-                document.addEventListener("intel.xdk.file.upload.busy", uploadBusy);
-                document.addEventListener("intel.xdk.file.upload", uploadComplete);
-                document.addEventListener("intel.xdk.file.upload.cancel", uploadCancelled);
+                                        //we have success, now let's see what the next step is
+                                        if (data.step && data.step == 'address') {
+                                            $("#posterly_address_popup").bPopup();
+                                        }
 
-                function uploadBusy(evt) {
-                    alert("Sorry, a file is already being uploaded");
-                }
-
-                function uploadComplete(evt) {
-                    if (evt.success == true) {
-                        alert("File " + evt.localURL + " was uploaded");
-
-                        $.ajax("http://localhost:8000/api/users/create_userprofile/", {
-                            type: "POST",
-                            data: {
-                                'username': ebay_username,
-                                'password': ebay_password,
-                                'email': 'null@null.com',
-                                'item_name': ebay_item_name,
-                                'price': ebay_item_price,
-                                'shipping': ebay_item_shipping,
-                                'condition': ebay_item_condition,
-                                'photo': evt.remoteURL
-                            },
-                            success: function (data) {
-                                if (data.success) {
-                                    window.localStorage["username"] = ebay_username;
-                                    window.localStorage["password"] = ebay_password;
-
-                                    //we have success, now let's see what the next step is
-                                    if (data.step && data.step == 'address') {
-                                        $("#posterly_address_popup").bPopup();
+                                        if (data.step && data.step == 'category') {
+                                            /*$("#posterly_category_popup").bPopup();
+                                            if (data.first_category_text && data.first_category_id) { $('#posterly_category_name').val(data.first_category_text); $('#posterly_category_id').val(data.first_category_id); }*/
+                                        }
+                                    } else {
+                                        alert('Could not authenticate your eBay credentials...');
                                     }
-
-                                    if (data.step && data.step == 'category') {
-                                        /*$("#posterly_category_popup").bPopup();
-
-                                if (data.first_category_text && data.first_category_id) {
-                                    $('#posterly_category_name').val(data.first_category_text);
-                                    $('#posterly_category_id').val(data.first_category_id);
-                                }*/
-                                    }
-
-                                } else {
-                                    alert('Could not authenticate your eBay credentials...');
+                                },
+                                failure: function (data) {
+                                    alert(data.success);
                                 }
-                            },
-                            failure: function (data) {
-                                alert(data.success);
-                            }
-                        });
-                    } else {
-                        alert("Error uploading file " + evt.message);
+                            });
+                        }
+                    },
+                    failure: function (data) {
+                        alert("Upload photo failed: " + data.success);
                     }
-                }
-
-                function uploadCancelled(evt) {
-                    alert("File upload was cancelled " + evt.localURL);
-                }
+                });
 
                 return false;
             },
@@ -342,7 +323,7 @@
 
                 navigator.camera.getPicture(onSuccess, onFail, {
                     quality: 50,
-                    destinationType: Camera.DestinationType.FILE_URI,
+                    destinationType: Camera.DestinationType.DATA_URL,
                     sourceType: Camera.PictureSourceType.CAMERA,
                     targetWidth: 100,
                     targetHeight: 100,
@@ -350,9 +331,9 @@
                 });
                 //http://epilepsyapp.wordpress.com/2012/04/25/348/
 
-                function onSuccess(imageURI) {
+                function onSuccess(imageData) {
                     var image = document.getElementById('img' + (numBoxes - 1));
-                    image.src = imageURI;
+                    image.src = "data:image/jpeg;base64," + imageData;
                 }
 
                 function onFail(message) {

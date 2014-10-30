@@ -6,7 +6,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "appDesigner",
       "projectGuid": "65223b6f-adf4-4174-88e5-266b26867f23",
-      "lastModifiedDate": 1413421705527,
+      "lastModifiedDate": 1414192097996,
       "creationDate": 1413393542551
     },
     "XDK-app-designer": "true",
@@ -46,6 +46,17 @@
         "selectedState": "Included",
         "data": {},
         "paramvals": {}
+      },
+      {
+        "id": "org.apache.cordova.file-transfer",
+        "version": "",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {},
+        "custom": "true",
+        "name": "FileTransfer",
+        "origin": "https://github.com/apache/cordova-plugin-file-transfer.git",
+        "originType": "repo"
       }
     ],
     "buildConfigurations": {
