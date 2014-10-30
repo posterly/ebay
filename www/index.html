@@ -234,8 +234,8 @@
                                 },
                                 success: function (data) {
                                     if (data.success) {
-                                        //window.localStorage["username"] = ebay_username;
-                                        //window.localStorage["password"] = ebay_password;
+                                        window.localStorage["username"] = ebay_username;
+                                        window.localStorage["password"] = ebay_password;
 
                                         //we have success, now let's see what the next step is
                                         if (data.step && data.step == 'address') {
@@ -244,7 +244,10 @@
 
                                         if (data.step && data.step == 'category') {
                                             /*$("#posterly_category_popup").bPopup();
-                                            if (data.first_category_text && data.first_category_id) { $('#posterly_category_name').val(data.first_category_text); $('#posterly_category_id').val(data.first_category_id); }*/
+                                            if (data.first_category_text && data.first_category_id) {
+                                                $('#posterly_category_name').val(data.first_category_text);
+                                                $('#posterly_category_id').val(data.first_category_id);
+                                            }*/
                                         }
                                     } else {
                                         alert('Could not authenticate your eBay credentials...');
