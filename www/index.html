@@ -213,54 +213,41 @@
                 //Get the image to upload
                 var base64_photo = ebay_item_photo.substring(ebay_item_photo.lastIndexOf(",") + 1);
 
-                $.ajax("http://localhost:8000/api/users/upload_photo/", {
+                $.ajax("http://localhost:8000/api/users/create_userprofile/", {
                     type: "POST",
                     data: {
-                        'base64Photo': base64_photo
+                        'username': ebay_username,
+                        'password': ebay_password,
+                        'email': 'null@null.com',
+                        'item_name': ebay_item_name,
+                        'price': ebay_item_price,
+                        'shipping': ebay_item_shipping,
+                        'condition': ebay_item_condition,
+                        'base64_photo': base64_photo
                     },
                     success: function (data) {
                         if (data.success) {
-                            $.ajax("http://localhost:8000/api/users/create_userprofile/", {
-                                type: "POST",
-                                data: {
-                                    'username': ebay_username,
-                                    'password': ebay_password,
-                                    'email': 'null@null.com',
-                                    'item_name': ebay_item_name,
-                                    'price': ebay_item_price,
-                                    'shipping': ebay_item_shipping,
-                                    'condition': ebay_item_condition,
-                                    'photo': evt.remoteURL
-                                },
-                                success: function (data) {
-                                    if (data.success) {
-                                        window.localStorage["username"] = ebay_username;
-                                        window.localStorage["password"] = ebay_password;
+                            window.localStorage["username"] = ebay_username;
+                            window.localStorage["password"] = ebay_password;
 
-                                        //we have success, now let's see what the next step is
-                                        if (data.step && data.step == 'address') {
-                                            $("#posterly_address_popup").bPopup();
-                                        }
+                            //we have success, now let's see what the next step is
+                            if (data.step && data.step == 'address') {
+                                $("#posterly_address_popup").bPopup();
+                            }
 
-                                        if (data.step && data.step == 'category') {
-                                            /*$("#posterly_category_popup").bPopup();
-                                            if (data.first_category_text && data.first_category_id) {
-                                                $('#posterly_category_name').val(data.first_category_text);
-                                                $('#posterly_category_id').val(data.first_category_id);
-                                            }*/
-                                        }
-                                    } else {
-                                        alert('Could not authenticate your eBay credentials...');
-                                    }
-                                },
-                                failure: function (data) {
-                                    alert(data.success);
-                                }
-                            });
+                            if (data.step && data.step == 'category') {
+                                /*$("#posterly_category_popup").bPopup();
+                                if (data.first_category_text && data.first_category_id) {
+                                    $('#posterly_category_name').val(data.first_category_text);
+                                    $('#posterly_category_id').val(data.first_category_id);
+                                }*/
+                            }
+                        } else {
+                            alert('Could not authenticate your eBay credentials...');
                         }
                     },
                     failure: function (data) {
-                        alert("Upload photo failed: " + data.success);
+                        alert(data.success);
                     }
                 });
 
@@ -304,7 +291,7 @@
 
                 return false;
             }
-
+            
         }
 
 
@@ -468,7 +455,7 @@
                                     <div id="box1" class="photobox">
                                         <div class="photo" style='overflow: hidden;'>
                                             <span class="glyphicon glyphicon-camera"></span>
-                                            <img id="img1" width='100%' height='100%' />
+                                            <img id="img1" width='100%' height='100%' src="data:image/jpeg;base64," />
                                         </div>
                                         <div class="existing">Existing</div>
                                         <div class="remove">X</div>
